@@ -1,4 +1,4 @@
-# GPIO demo package
+# Analog Sensor via GPIO package
 
 info-beamer OS (from version 10) has support for GPIO access. The
 [package sdk](https://github.com/info-beamer/package-sdk)

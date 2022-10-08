@@ -1,7 +1,7 @@
 {
-    "name": "GPIO Demo",
-    "author": "Florian Wesch <fw@info-beamer.com>",
+    "name": "GPIO Analog Sensor Demo",
+    "author": "@leaf.cruncher",
     "desc": "Demonstrate GPIO integration",
-    "repository": "https://github.com/info-beamer/package-gpio-demo",
+    "repository": "https://github.com/epylinkn/package-anaolog-sensor",
     "platforms": ["pi/epoch-1", "pi/epoch-2"]
 }
