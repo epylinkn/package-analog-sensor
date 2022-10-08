@@ -1,0 +1,7 @@
+{
+    "name": "GPIO Demo",
+    "author": "Florian Wesch <fw@info-beamer.com>",
+    "desc": "Demonstrate GPIO integration",
+    "repository": "https://github.com/info-beamer/package-gpio-demo",
+    "platforms": ["pi/epoch-1", "pi/epoch-2"]
+}
