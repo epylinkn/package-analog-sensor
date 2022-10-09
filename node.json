@@ -1,7 +1,8 @@
 {
     "name": "GPIO Analog Sensor Demo",
     "permissions": {
-        "gpio": "Access GPIO"
+        "gpio": "yes",
+        "serial": "yes"
     },
     "options": [{
         "title": "PIN",
