@@ -6,17 +6,15 @@ local on = 0
 
 util.data_mapper{
     state = function(state)
-        on = state
+        on = tonumber(state)    'comes in as string!!!
     end,
 }
 
 function node.render()
     pp(on)
-    if (on > 700) then
-        pp("green")
+    if on > 700 then
         gl.clear(0, 1, 0, 1) -- green
     else
-        pp("red")
         gl.clear(1, 0, 0, 1) -- red
     end
 end
