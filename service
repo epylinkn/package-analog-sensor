@@ -5,10 +5,17 @@ import serial
 
 config.restart_on_update()
 
-ser = serial.Serial ("/dev/ttyS0", 115200)
+ser = serial.Serial ("/dev/ttyS0", 115200, timeout=0.5)
+ser.read(ser.inWaiting())                  # clear buffer
 while True:
-    received_data = ser.read()              #read serial port
-    print(received_data)                   #print received data
-    sleep(0.03)
-    node.send('/state:%d' % 9)
+    received_data = ser.readline()        # read serial (Serial.println(<0-1024>))
+    if received_data == '':
+        continue
 
+    try:
+        received_data = int(received_data)
+        node.send('/state:%d' % received_data)
+    except:
+        continue
+
+    sleep(0.03)
