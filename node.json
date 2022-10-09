@@ -10,5 +10,12 @@
         "name": "pin",
         "type": "integer",
         "default": 18
+    }, {
+        "title": "Video",
+        "ui_width": 6,
+        "name": "video",
+        "type": "resource",
+        "valid": ["video"],
+        "default": "example.mp4"
     }]
 }
