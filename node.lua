@@ -6,11 +6,15 @@ local on = false
 
 util.data_mapper{
     state = function(state)
-        on = state == '1'
+        pp("state")
+        pp(state)
+        on = state
     end,
 }
 
 function node.render()
+    pp("on")
+    pp(on)
     if on then
         gl.clear(0, 1, 0, 1) -- green
     else
