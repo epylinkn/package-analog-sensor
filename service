@@ -1,7 +1,19 @@
 #!/usr/bin/python
 from hosted import device, node, config
+from time import sleep
+import serial
+
 config.restart_on_update()
 
-device.gpio.monitor(config.pin)
-for pin, state in device.gpio.poll_forever():
-    node.send('/state:%d' % state)
+ser = serial.Serial ("/dev/ttyS0", 115200)
+while True:
+    received_data = ser.read()              #read serial port
+    print (received_data)                   #print received data
+    sleep(0.03)
+    node.send('/state:%d' % received_data)
+
+
+# device.gpio.monitor(config.pin)
+# for pin, state in device.gpio.poll_forever():
+#     node.send('/state:%d' % state)
+
