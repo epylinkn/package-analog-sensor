@@ -6,7 +6,7 @@ local on = 0
 
 util.data_mapper{
     state = function(state)
-        on = tonumber(state)    'comes in as string!!!
+        on = tonumber(state) -- comes in as string!!!
     end,
 }
 
