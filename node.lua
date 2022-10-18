@@ -30,7 +30,7 @@ util.json_watch("config.json", function(config)
     end
     current_video_idx = 0
     print("new playlist")
-    pp(playlisit)
+    pp(playlist)
 end)
 
 function loop_intro()
