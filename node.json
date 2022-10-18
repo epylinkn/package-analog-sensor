@@ -21,9 +21,9 @@
     }, {
         "title": "Video",
         "ui_width": 6,
-        "name": "file",
+        "name": "video",
         "type": "resource",
-        "valid": ["image", "video"],
-        "default": "empty.png"
+        "valid": ["video"],
+        "default": "example.mp4"
     }]
 }
