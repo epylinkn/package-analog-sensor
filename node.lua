@@ -53,6 +53,7 @@ function node.render()
             audio = true,
             raw = true,
         }
+        video:start()
     end
 
     if video then
