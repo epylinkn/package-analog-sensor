@@ -37,14 +37,22 @@ function loop_intro()
     if video then
         video:dispose()
     end
-    video = util.videoplayer(playlist[1], {loop=true})
+    video = resource.load_video{
+        file = playlist[1].asset_name,
+        audio = true,
+        looped = true,
+    }
 end
 
 function play_once()
     if video then
         video:dispose()
     end
-    video = util.videoplayer(playlist[2], {loop=false})
+    video = resource.load_video{
+        file = playlist[2].asset_name,
+        audio = true,
+        looped = false,
+    }
 end
 
 function node.render()
