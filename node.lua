@@ -34,8 +34,8 @@ util.json_watch("config.json", function(config)
     print("new playlist")
     pp(playlist)
 
-    video_one = resource.open_file(playlist[0].asset_name)
-    video_two = resource.open_file(playlist[1].asset_name)
+    video_one = resource.open_file(playlist[1].asset_name)
+    video_two = resource.open_file(playlist[2].asset_name)
 
     if video and video:state() == "paused" then
         video:dispose()
