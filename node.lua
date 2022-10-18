@@ -3,6 +3,7 @@ gl.setup(NATIVE_WIDTH, NATIVE_HEIGHT)
 -- util.no_globals()
 
 local on = 0
+local active = false
 
 local playlist, video, current_video_idx
 
@@ -60,10 +61,12 @@ function node.render()
     pp(video)
     -- if not video or not video:next() then
     if not video or video:state() == "finished" then
+        active = false
         loop_intro()
     end
 
-    if on > 700 then
+    if on > 700 and active == false then
+        active = true
         play_once()
     end
 
