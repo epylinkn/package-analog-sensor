@@ -23,10 +23,12 @@ util.json_watch("config.json", function(config)
 
     video_one = resource.load_video{
         file = config.video1.asset_name,
+        audio = true,
         looped = true,
     }
     video_two = resource.load_video{
         file = config.video2.asset_name,
+        audio = true,
         looped = true,
     }
 end)
