@@ -4,8 +4,10 @@ gl.setup(NATIVE_WIDTH, NATIVE_HEIGHT)
 
 local on = 0
 local active = false
+local video_one
+local video_two
 
-local playlist, video, current_video_idx
+local playlist, video
 
 util.data_mapper{
     state = function(state)
@@ -29,47 +31,38 @@ util.json_watch("config.json", function(config)
             }
         end
     end
-    current_video_idx = 0
     print("new playlist")
     pp(playlist)
+
+    video_one = resource.open_file(playlist[0].asset_name)
+    video_two = resource.open_file(playlist[1].asset_name)
+
+    if video and video:state() == "paused" then
+        video:dispose()
+        video = nil
+    end
 end)
 
-function loop_intro()
-    if video then
-        video:dispose()
-    end
-    video = resource.load_video{
-        file = playlist[1].asset_name,
-        audio = false,
-        looped = true,
-    }
-end
-
-function play_once()
-    if video then
-        video:dispose()
-    end
-    video = resource.load_video{
-        file = playlist[2].asset_name,
-        audio = true,
-        looped = false,
-    }
-end
-
 function node.render()
-    pp(on)
+    gl.clear(0, 0, 0, 1)
 
-    -- if not video or not video:next() then
-    if not video or video:state() == "finished" then
-        -- active = false
-        pp("here")
-        loop_intro()
+    if not video then
+        video = resource.load_video{
+            file = video_one:copy(),
+            -- paused = true,
+            audio = true,
+            raw = true,
+        }
     end
 
-    -- if on > 700 and active == false then
-    --     active = true
-    --     trigger_once()
-    -- end
-
-    video:draw(0, 0, WIDTH, HEIGHT)
+    if video then
+        local state, w, h = video:state()
+        if state == "loaded" then
+            local x1, y1, x2, y2 = util.scale_into(NATIVE_WIDTH, NATIVE_HEIGHT, w, h)
+            video:target(x1, y1, x2, y2):layer(2)
+        elseif state == "finished" or state == "error" then
+            video:dispose()
+            video = nil
+        end
+    end
 end
