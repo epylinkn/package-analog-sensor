@@ -40,7 +40,7 @@ function loop_intro()
     end
     video = resource.load_video{
         file = playlist[1].asset_name,
-        audio = true,
+        audio = false,
         looped = true,
     }
 end
