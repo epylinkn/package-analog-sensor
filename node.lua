@@ -58,17 +58,18 @@ end
 
 function node.render()
     pp(on)
-    pp(video)
+
     -- if not video or not video:next() then
     if not video or video:state() == "finished" then
-        active = false
+        -- active = false
+        pp("here")
         loop_intro()
     end
 
-    if on > 700 and active == false then
-        active = true
-        play_once()
-    end
+    -- if on > 700 and active == false then
+    --     active = true
+    --     trigger_once()
+    -- end
 
     video:draw(0, 0, WIDTH, HEIGHT)
 end
