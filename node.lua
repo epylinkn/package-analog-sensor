@@ -45,6 +45,7 @@ end)
 
 function node.render()
     gl.clear(0, 0, 0, 1)
+    pp("distance:" + distance)
 
     if distance < 12 and active == false then
         active = true
@@ -69,8 +70,6 @@ function node.render()
         }
         video:start()
     end
-
-    pp(video:state())
 
     if video then
         local state, w, h = video:state()
