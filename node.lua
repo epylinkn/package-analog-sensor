@@ -46,7 +46,19 @@ end)
 function node.render()
     gl.clear(0, 0, 0, 1)
 
+    if on > 700 and active == false then
+        active = true
+        video = resource.load_video{
+            file = video_two:copy(),
+            paused = true,
+            audio = true,
+            raw = true,
+        }
+        video:start()
+    end
+
     if not video then
+        active = false
         video = resource.load_video{
             file = video_one:copy(),
             paused = true,
@@ -55,7 +67,7 @@ function node.render()
         }
         video:start()
     end
-    
+
     pp(video:state())
 
     if video then
