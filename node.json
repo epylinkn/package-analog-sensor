@@ -19,9 +19,16 @@
         "title": "What to display",
         "type": "section"
     }, {
-        "title": "Video",
+        "title": "Video 1",
         "ui_width": 6,
-        "name": "video",
+        "name": "video1",
+        "type": "resource",
+        "valid": ["video"],
+        "default": "example.mp4"
+    } , {
+        "title": "Video 2",
+        "ui_width": 6,
+        "name": "video2",
         "type": "resource",
         "valid": ["video"],
         "default": "example.mp4"
