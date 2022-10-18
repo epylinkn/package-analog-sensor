@@ -60,6 +60,7 @@ function node.render()
     end
 
     if not video then
+        on = 0
         active = false
         video = resource.load_video{
             file = video_one:copy(),
