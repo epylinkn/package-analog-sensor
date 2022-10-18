@@ -48,6 +48,8 @@ function node.render()
 
     if on == 1 and active == false then
         active = true
+        video:dispose()
+        video = nil
         video = resource.load_video{
             file = video_two:copy(),
             paused = true,
