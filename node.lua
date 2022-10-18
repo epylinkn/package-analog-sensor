@@ -34,10 +34,10 @@ end)
 function node.render()
     pp(on)
     if on > 700 then
-        video_one.draw(0, 0, WIDTH, HEIGHT)
+        video_one:draw(0, 0, WIDTH, HEIGHT)
         -- gl.clear(0, 1, 0, 1) -- green
     else
-        video_two.draw(0, 0, WIDTH, HEIGHT)
+        video_two:draw(0, 0, WIDTH, HEIGHT)
         -- gl.clear(1, 0, 0, 1) -- red
     end
 end
