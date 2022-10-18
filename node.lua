@@ -4,8 +4,7 @@ util.no_globals()
 
 local on = 0
 
-local video_one
-local video_two
+local playlist, video, current_video_idx
 
 util.data_mapper{
     state = function(state)
@@ -14,32 +13,49 @@ util.data_mapper{
 }
 
 util.json_watch("config.json", function(config)
-    if video_one then
-        video_one:dispose()
-    end
-    if video_two then
-        video_two:dispose()
-    end
+    playlist = {}
 
-    video_one = resource.load_video{
-        file = config.video1.asset_name,
-        audio = true,
-        looped = true,
-    }
-    video_two = resource.load_video{
-        file = config.video2.asset_name,
-        audio = true,
-        looped = true,
-    }
+    for _, item in ipairs(config.playlist) do
+        if item.duration > 0 then
+            local format = item.file.metadata and item.file.metadata.format
+            local duration = item.duration
+            playlist[#playlist+1] = {
+                duration = duration,
+                format = format,
+                asset_name = item.file.asset_name,
+                type = item.file.type,
+            }
+        end
+    end
+    current_video_idx = 0
+    print("new playlist")
+    pp(playlisit)
 end)
+
+function loop_intro()
+    if video then
+        video:dispose()
+    end
+    video = util.videoplayer(playlist[1], {loop=true})
+end
+
+function play_once()
+    if video then
+        video:dispose()
+    end
+    video = util.videoplayer(playlist[2], {loop=false})
+end
 
 function node.render()
     pp(on)
-    if on > 700 then
-        video_one:draw(0, 0, WIDTH, HEIGHT)
-        -- gl.clear(0, 1, 0, 1) -- green
-    else
-        video_two:draw(0, 0, WIDTH, HEIGHT)
-        -- gl.clear(1, 0, 0, 1) -- red
+
+    if not video or not video:next() then
+        loop_intro()
     end
+
+    if on > 700 then
+        play_once()
+    end
+
+    util.draw_correct(video, 0, 0, WIDTH, HEIGHT)
 end
