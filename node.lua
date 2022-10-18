@@ -57,7 +57,7 @@ end
 
 function node.render()
     pp(on)
-
+    pp(video)
     if not video or not video:next() then
         loop_intro()
     end
@@ -66,5 +66,5 @@ function node.render()
         play_once()
     end
 
-    util.draw_correct(video, 0, 0, WIDTH, HEIGHT)
+    video:draw(0, 0, WIDTH, HEIGHT)
 end
