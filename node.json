@@ -5,17 +5,25 @@
         "serial": "yes"
     },
     "options": [{
+        "title": "Configuration",
+        "type": "section"
+    }, {
         "title": "PIN",
         "ui_width": 4,
         "name": "pin",
         "type": "integer",
         "default": 18
+    }, 
+    
+    {
+        "title": "What to display",
+        "type": "section"
     }, {
         "title": "Video",
         "ui_width": 6,
-        "name": "video",
+        "name": "file",
         "type": "resource",
-        "valid": ["video"],
-        "default": "example.mp4"
+        "valid": ["image", "video"],
+        "default": "empty.png"
     }]
 }
