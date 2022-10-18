@@ -46,7 +46,7 @@ end)
 function node.render()
     gl.clear(0, 0, 0, 1)
 
-    if on > 700 and active == false then
+    if on == 1 and active == false then
         active = true
         video = resource.load_video{
             file = video_two:copy(),
