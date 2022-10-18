@@ -15,6 +15,7 @@ util.data_mapper{
 util.json_watch("config.json", function(config)
     playlist = {}
 
+    pp(config)
     for _, item in ipairs(config.playlist) do
         if item.duration > 0 then
             local format = item.file.metadata and item.file.metadata.format
