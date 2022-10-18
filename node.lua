@@ -49,12 +49,14 @@ function node.render()
     if not video then
         video = resource.load_video{
             file = video_one:copy(),
-            -- paused = true,
+            paused = true,
             audio = true,
             raw = true,
         }
         video:start()
     end
+    
+    pp(video:state())
 
     if video then
         local state, w, h = video:state()
