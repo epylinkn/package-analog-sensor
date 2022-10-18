@@ -58,7 +58,8 @@ end
 function node.render()
     pp(on)
     pp(video)
-    if not video or not video:next() then
+    -- if not video or not video:next() then
+    if not video or video::state() == "finished" then
         loop_intro()
     end
 
