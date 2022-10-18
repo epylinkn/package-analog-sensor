@@ -2,7 +2,7 @@ gl.setup(NATIVE_WIDTH, NATIVE_HEIGHT)
 
 -- util.no_globals()
 
-local on = 0
+local distance = 100
 local active = false
 local video_one
 local video_two
@@ -11,7 +11,7 @@ local playlist, video
 
 util.data_mapper{
     state = function(state)
-        on = tonumber(state) -- comes in as string!!!
+        distance = tonumber(state) -- comes in as string!!!
     end,
 }
 
@@ -46,7 +46,7 @@ end)
 function node.render()
     gl.clear(0, 0, 0, 1)
 
-    if on == 1 and active == false then
+    if distance < 12 and active == false then
         active = true
         video:dispose()
         video = nil
@@ -60,7 +60,6 @@ function node.render()
     end
 
     if not video then
-        on = 0
         active = false
         video = resource.load_video{
             file = video_one:copy(),
