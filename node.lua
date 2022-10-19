@@ -79,7 +79,7 @@ function node.render()
         local state, w, h = video:state()
         if state == "loaded" then
             local x1, y1, x2, y2 = util.scale_into(NATIVE_WIDTH, NATIVE_HEIGHT, w, h)
-            video:place(x1, y1, x2, y2):layer(2)
+            video:place(x1, y1, x2, y2):layer(-1)
         elseif state == "finished" or state == "error" then
             video:dispose()
             video = nil
