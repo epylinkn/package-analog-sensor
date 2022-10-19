@@ -2,20 +2,26 @@ gl.setup(NATIVE_WIDTH, NATIVE_HEIGHT)
 
 -- util.no_globals()
 
-local configuring = true
-local threshold = 50
+local isConfiguring = false
 local distance = 100
+local threshold = 100
+
 local active = false
 local video_one
 local video_two
-
 local playlist, video
-local font = resource.load_font("robotomono.ttf")
 
+local font = resource.load_font("robotomono.ttf")
 
 util.data_mapper{
     state = function(state)
         distance = tonumber(state) -- comes in as string!!!
+    end,
+    configure = function(configure)
+        isConfiguring = configure == "1"
+    end,
+    limit = function(limit)
+        threshold = tonumber(limit)
     end,
 }
 
@@ -86,7 +92,7 @@ function node.render()
         end
     end
 
-    if configuring then
+    if isConfiguring then
         font:write(200, 200, "# CONFIGURATION MODE", 200, 1, 1, 1, 1)
         font:write(200, 500, ("THRESHOLD: " .. threshold), 160, 1, 1, 1, 1)
         font:write(200, 700, ("READING: " .. distance), 160, 1, 1, 1, 1)
