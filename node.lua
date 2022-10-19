@@ -48,7 +48,7 @@ util.json_watch("config.json", function(config)
 end)
 
 function node.render()
-    gl.clear(0, 0, 0, 1)
+    gl.clear(0, 0, 0, 0)
     pp("distance: " .. distance)
 
     if distance < threshold and active == false then
