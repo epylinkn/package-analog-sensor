@@ -87,8 +87,8 @@ function node.render()
     end
 
     if configuring then
-        font:write(200, 200, "CONFIGURATION MODE", 200, 1, 1, 1, 1)
-        font:write(200, 520, ("THRESHOLD: " .. threshold), 200, 1, 1, 1, 1)
-        font:write(200, 650, ("READING: " .. distance), 200, 1, 1, 1, 1)
+        font:write(200, 200, "# CONFIGURATION MODE", 200, 1, 1, 1, 1)
+        font:write(200, 500, ("THRESHOLD: " .. threshold), 160, 1, 1, 1, 1)
+        font:write(200, 700, ("READING: " .. distance), 160, 1, 1, 1, 1)
     end
 end
