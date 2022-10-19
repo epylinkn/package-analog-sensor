@@ -12,9 +12,18 @@ while True:
     if received_data == '':
         continue
 
+    data = received_data.split(",")
+    print("8============D ", data)
+
     try:
-        received_data = int(received_data)
-        node.send('/state:%d' % received_data)
+        if data[0] == 'state':
+            node.send('/state:%d' % int(data[1]))      # distance measurement!
+        elif data[0] == 'configure':
+            node.send('/configure:%d' % int(data[1]))  # 0 or 1 flag
+        elif data[0] == 'threshold':
+            node.send('/threshold:%d' % int(data[1]))   # set threshold
+        else:
+            pass # unrecognized message; no-op
     except:
         continue
 
